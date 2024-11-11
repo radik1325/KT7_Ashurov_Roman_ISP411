@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bbc6487dec6b40339b6ed9f19e252ca3" Name="Diagram1">
+        <EntityTypeShape EntityType="MasterPolDataModel.AdressPartners" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPolDataModel.Area" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPolDataModel.City" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPolDataModel.DirectorPartners" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPolDataModel.MaterialType" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPolDataModel.PartnerProduct" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPolDataModel.Partners" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPolDataModel.Products" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPolDataModel.Street" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPolDataModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPolDataModel.TypePartners" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPolDataModel.TypeProducts" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <AssociationConnector Association="MasterPolDataModel.FK_AdressPartners_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterPolDataModel.FK_AdressPartners_City" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterPolDataModel.FK_AdressPartners_Street" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterPolDataModel.FK_Partners_AdressPartners" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterPolDataModel.FK_Partners_DirectorPartners" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterPolDataModel.FK_PartnerProduct_Partners" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterPolDataModel.FK_PartnerProduct_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterPolDataModel.FK_Partners_TypePartners" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterPolDataModel.FK_Products_TypeProducts" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

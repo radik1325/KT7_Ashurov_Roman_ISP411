@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище MasterPolDataModelContainer" CdmEntityContainer="MasterPolDataEntities">
+    <EntitySetMapping Name="AdressPartners">
+      <EntityTypeMapping TypeName="MasterPolDataModel.AdressPartners">
+        <MappingFragment StoreEntitySet="AdressPartners">
+          <ScalarProperty Name="AdressPartnerId" ColumnName="AdressPartnerId" />
+          <ScalarProperty Name="AdressPartnerIndex" ColumnName="AdressPartnerIndex" />
+          <ScalarProperty Name="AdressPartnerIdArea" ColumnName="AdressPartnerIdArea" />
+          <ScalarProperty Name="AdressPartnerIdCity" ColumnName="AdressPartnerIdCity" />
+          <ScalarProperty Name="AdressPartnerIdStreet" ColumnName="AdressPartnerIdStreet" />
+          <ScalarProperty Name="AdressPartnerIdHouse" ColumnName="AdressPartnerIdHouse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Area">
+      <EntityTypeMapping TypeName="MasterPolDataModel.Area">
+        <MappingFragment StoreEntitySet="Area">
+          <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+          <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="MasterPolDataModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DirectorPartners">
+      <EntityTypeMapping TypeName="MasterPolDataModel.DirectorPartners">
+        <MappingFragment StoreEntitySet="DirectorPartners">
+          <ScalarProperty Name="DirectorPartnersId" ColumnName="DirectorPartnersId" />
+          <ScalarProperty Name="DirectorPartnersName" ColumnName="DirectorPartnersName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaterialType">
+      <EntityTypeMapping TypeName="MasterPolDataModel.MaterialType">
+        <MappingFragment StoreEntitySet="MaterialType">
+          <ScalarProperty Name="MaterialTypeId" ColumnName="MaterialTypeId" />
+          <ScalarProperty Name="MaterialTypeProcentBraka" ColumnName="MaterialTypeProcentBraka" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartnerProduct">
+      <EntityTypeMapping TypeName="MasterPolDataModel.PartnerProduct">
+        <MappingFragment StoreEntitySet="PartnerProduct">
+          <ScalarProperty Name="PartnerProductId" ColumnName="PartnerProductId" />
+          <ScalarProperty Name="PartnerProductProductId" ColumnName="PartnerProductProductId" />
+          <ScalarProperty Name="PartnerProductPartnerId" ColumnName="PartnerProductPartnerId" />
+          <ScalarProperty Name="PartnerProductCountProduct" ColumnName="PartnerProductCountProduct" />
+          <ScalarProperty Name="PartnerProductDate" ColumnName="PartnerProductDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Partners">
+      <EntityTypeMapping TypeName="MasterPolDataModel.Partners">
+        <MappingFragment StoreEntitySet="Partners">
+          <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+          <ScalarProperty Name="PartnerTypeId" ColumnName="PartnerTypeId" />
+          <ScalarProperty Name="PartnerName" ColumnName="PartnerName" />
+          <ScalarProperty Name="PartnerDirectorId" ColumnName="PartnerDirectorId" />
+          <ScalarProperty Name="PartnerEmail" ColumnName="PartnerEmail" />
+          <ScalarProperty Name="PartnerPhone" ColumnName="PartnerPhone" />
+          <ScalarProperty Name="PartnerAdressId" ColumnName="PartnerAdressId" />
+          <ScalarProperty Name="PartnerINN" ColumnName="PartnerINN" />
+          <ScalarProperty Name="PartnerRating" ColumnName="PartnerRating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="MasterPolDataModel.Products">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="ProductsId" ColumnName="ProductsId" />
+          <ScalarProperty Name="ProductsTypeId" ColumnName="ProductsTypeId" />
+          <ScalarProperty Name="ProductsName" ColumnName="ProductsName" />
+          <ScalarProperty Name="ProductsArticul" ColumnName="ProductsArticul" />
+          <ScalarProperty Name="ProductsMinCost" ColumnName="ProductsMinCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Street">
+      <EntityTypeMapping TypeName="MasterPolDataModel.Street">
+        <MappingFragment StoreEntitySet="Street">
+          <ScalarProperty Name="StreetId" ColumnName="StreetId" />
+          <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MasterPolDataModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypePartners">
+      <EntityTypeMapping TypeName="MasterPolDataModel.TypePartners">
+        <MappingFragment StoreEntitySet="TypePartners">
+          <ScalarProperty Name="TypePartnerId" ColumnName="TypePartnerId" />
+          <ScalarProperty Name="TypePartnerName" ColumnName="TypePartnerName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeProducts">
+      <EntityTypeMapping TypeName="MasterPolDataModel.TypeProducts">
+        <MappingFragment StoreEntitySet="TypeProducts">
+          <ScalarProperty Name="TypeProductId" ColumnName="TypeProductId" />
+          <ScalarProperty Name="TypeProductName" ColumnName="TypeProductName" />
+          <ScalarProperty Name="TypeProductKoef" ColumnName="TypeProductKoef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
