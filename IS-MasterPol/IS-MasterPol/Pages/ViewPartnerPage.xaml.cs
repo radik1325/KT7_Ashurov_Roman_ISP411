@@ -25,5 +25,20 @@ namespace IS_MasterPol.Pages
             InitializeComponent();
             ViewPartner.ItemsSource = Data.MasterPolDataEntities.GetContext().Partners.ToList();
         }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Manager.MainFrame.Navigate(new Pages.AddPartnerPage((sender as Button).DataContext as Data.Partners));
+        }
+
+        private void HistoryButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Manager.MainFrame.Navigate(new Pages.AddPartnerPage(null));
+        }
     }
 }

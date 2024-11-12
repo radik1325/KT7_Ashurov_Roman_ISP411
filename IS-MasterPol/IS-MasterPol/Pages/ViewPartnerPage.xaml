@@ -20,10 +20,10 @@
                 <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="200"></ColumnDefinition>
+                                <ColumnDefinition Width="200"></ColumnDefinition>
+                                <ColumnDefinition Width="120"></ColumnDefinition>
+                                <ColumnDefinition Width="120"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
                             <StackPanel Grid.Column="0">
@@ -36,13 +36,18 @@
                                 <TextBlock Text="{Binding PartnerPhone}"></TextBlock>
                                 <TextBlock Text="{Binding PartnerRating , StringFormat={}Рейтинг: {0}}"></TextBlock>
                             </StackPanel>
+                            <TextBlock Grid.Column="1" Text="10%" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+
+                            <Button x:Name="EditButton" Grid.Column="2" Content="Редактировать" Click="EditButton_Click" ></Button>
+                            <Button x:Name="HistoryButton" Grid.Column="3" Content="История продаж" Click="HistoryButton_Click"></Button>
+                            
                         </Grid>
                     </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         </Grid>
         <Grid Grid.Row="1">
-            <Button Content="Добавить" VerticalAlignment="Center" HorizontalAlignment="Center" ></Button>
+            <Button Content="Добавить" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="AddButton" Click="AddButton_Click"></Button>
         </Grid>
     </Grid>
 </Page>

@@ -23,13 +23,13 @@ namespace IS_MasterPol.Data
 
         public static MasterPolDataEntities GetContext()
         {
-            if(_context == null)
+            if (_context == null)
             {
                 _context = new MasterPolDataEntities();
             }
             return _context;
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

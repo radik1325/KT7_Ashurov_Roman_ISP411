@@ -60,7 +60,7 @@
     <Property Name="PartnerEmail" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="PartnerPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="PartnerAdressId" Type="int" Nullable="false" />
-    <Property Name="PartnerINN" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartnerINN" Type="nvarchar" MaxLength="50" />
     <Property Name="PartnerRating" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Products">
