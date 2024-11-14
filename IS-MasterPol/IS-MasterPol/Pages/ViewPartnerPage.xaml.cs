@@ -33,7 +33,7 @@ namespace IS_MasterPol.Pages
 
         private void HistoryButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Classes.Manager.MainFrame.Navigate(new Pages.HistoryPage((sender as Button).DataContext as Data.Partners));
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)

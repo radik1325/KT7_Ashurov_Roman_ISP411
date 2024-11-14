@@ -68,11 +68,17 @@ namespace IS_MasterPol.Pages
                 var adress = String.Join(",", AdresConcat);
                 AdressPartnerBox.Text = adress.ToString();
             }
+            StringBuilder errors = new StringBuilder();
+            errors.AppendLine("При добавлении/редактировании партнера,просьба вводить: ");
+            errors.AppendLine(" 1)Фамилию Имя Отчество директора через пробел.");
+            errors.AppendLine(" 2)Введите адрес с разделителем запятая,пример: \r\n123456,Московская область,город Люберцы,улица вертолетная,18");
+            MessageBox.Show(errors.ToString(),"Важная информация",MessageBoxButton.OK,MessageBoxImage.Information);
         }
 
         private void SavePartner_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();
+
             if(NamePartnerbox.Text == "")
             {
                 errors.AppendLine("Введите наименование партнера");
@@ -97,9 +103,10 @@ namespace IS_MasterPol.Pages
             {
                 errors.AppendLine("Введите почту");
             }
+            
+           //Проверка рейтинга
 
-
-            string[] adres = AdressPartnerBox.Text.Split(',');
+            string[] adres = AdressPartnerBox.Text.Trim(' ').Split(',');
 
             if (adres.Length < 5)
             {
@@ -108,7 +115,9 @@ namespace IS_MasterPol.Pages
             if (errors.Length > 0)
             {
                 MessageBox.Show(errors.ToString(), "Errors", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
+
             if(FlagAddorEdit == "Add")
             {
                 _CurrrentPartner.PartnerName = NamePartnerbox.Text;
@@ -116,6 +125,7 @@ namespace IS_MasterPol.Pages
                 _CurrrentPartner.PartnerEmail = emailPartnerbox.Text;
                 _CurrrentPartner.PartnerTypeId = (TypePartnerBox.SelectedIndex+1);
                 _CurrrentPartner.PartnerRating = RatingPartnerbox.Text;
+
                 if (Data.MasterPolDataEntities.GetContext().DirectorPartners.Any(d=> d.DirectorPartnersName == DirectorPartnerbox.Text))
                 {
                     var searchDirector = Data.MasterPolDataEntities.GetContext().DirectorPartners.Where(d => d.DirectorPartnersName == DirectorPartnerbox.Text).FirstOrDefault();
@@ -125,17 +135,191 @@ namespace IS_MasterPol.Pages
                 {
                     _CurrrentPartner.PartnerDirectorId = Data.MasterPolDataEntities.GetContext().DirectorPartners.Max(d=> d.DirectorPartnersId+1);
                     Data.DirectorPartners NewDirector = new Data.DirectorPartners();
+                    NewDirector.DirectorPartnersId = Data.MasterPolDataEntities.GetContext().DirectorPartners.Max(d => d.DirectorPartnersId + 1);
                     NewDirector.DirectorPartnersName = DirectorPartnerbox.Text;
                     Data.MasterPolDataEntities.GetContext().DirectorPartners.Add(NewDirector);
                     Data.MasterPolDataEntities.GetContext().SaveChanges();
                     
                 }
-                _CurrrentPartner.PartnerAdressId = 1;
+
+                string a0 = adres[0];
+                string a = adres[1];
+                string a1 = adres[2];
+                string a2 = adres[3];
+                string a3 = adres[4];
+
+                if (Data.MasterPolDataEntities.GetContext().AdressPartners.Any(d => d.AdressPartnerIndex == a0
+                && d.Area.AreaName == a && d.City.CityName == a1 && d.Street.StreetName == a2 && d.AdressPartnerIdHouse ==a3))
+                {
+                    var searchadress = Data.MasterPolDataEntities.GetContext().AdressPartners.Where(d => d.AdressPartnerIndex == a0
+                    && d.Area.AreaName == a && d.City.CityName == a1 && d.Street.StreetName == a2 && d.AdressPartnerIdHouse == a3).FirstOrDefault();
+                    _CurrrentPartner.PartnerAdressId = searchadress.AdressPartnerId;
+                }
+
+                else
+                {
+                    Data.AdressPartners _NewAdress = new Data.AdressPartners();
+
+
+                    if (Data.MasterPolDataEntities.GetContext().Area.Any(d => d.AreaName == a))
+                    {
+                        var searchArea = Data.MasterPolDataEntities.GetContext().Area.Where(d => d.AreaName == a).FirstOrDefault();
+                        _NewAdress.AdressPartnerIdArea = searchArea.AreaId;
+                    }
+                    else
+                    {
+                        _NewAdress.AdressPartnerIdArea = Data.MasterPolDataEntities.GetContext().Area.Max(d => d.AreaId + 1);
+                        Data.Area NewArea = new Data.Area();
+                        NewArea.AreaName = a;
+                        Data.MasterPolDataEntities.GetContext().Area.Add(NewArea);
+                        Data.MasterPolDataEntities.GetContext().SaveChanges();
+
+                    }
+
+
+                    if (Data.MasterPolDataEntities.GetContext().City.Any(d => d.CityName == a1))
+                    {
+                        var searchCity = Data.MasterPolDataEntities.GetContext().City.Where(d => d.CityName == a1).FirstOrDefault();
+                        _NewAdress.AdressPartnerIdCity = searchCity.CityId;
+                    }
+                    else
+                    {
+                        _NewAdress.AdressPartnerIdCity = Data.MasterPolDataEntities.GetContext().City.Max(d => d.CityId + 1);
+                        Data.City NewCity = new Data.City();
+                        NewCity.CityName = a1;
+                        Data.MasterPolDataEntities.GetContext().City.Add(NewCity);
+                        Data.MasterPolDataEntities.GetContext().SaveChanges();
+
+                    }
+
+
+                    if (Data.MasterPolDataEntities.GetContext().Street.Any(d => d.StreetName == a2))
+                    {
+                        var searchStreet = Data.MasterPolDataEntities.GetContext().Street.Where(d => d.StreetName == a2).FirstOrDefault();
+                        _NewAdress.AdressPartnerIdStreet = searchStreet.StreetId;
+                    }
+                    else
+                    {
+                        _NewAdress.AdressPartnerIdStreet = Data.MasterPolDataEntities.GetContext().Street.Max(d => d.StreetId + 1);
+                        Data.Street NewStreet = new Data.Street();
+                        NewStreet.StreetName = a2;
+                        Data.MasterPolDataEntities.GetContext().Street.Add(NewStreet);
+                        Data.MasterPolDataEntities.GetContext().SaveChanges();
+
+                    }
+                    _NewAdress.AdressPartnerIndex = a0;
+                    _NewAdress.AdressPartnerIdHouse = a3;
+                    Data.MasterPolDataEntities.GetContext().AdressPartners.Add(_NewAdress);
+                    Data.MasterPolDataEntities.GetContext().SaveChanges();
+                    _CurrrentPartner.PartnerAdressId = Data.MasterPolDataEntities.GetContext().AdressPartners.Max(d=>d.AdressPartnerId);
+                }
+
+                
                 Data.MasterPolDataEntities.GetContext().Partners.Add(_CurrrentPartner);
                 Data.MasterPolDataEntities.GetContext().SaveChanges();
+                MessageBox.Show("Успешно сохранено", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-           
-        }
+
+            if (FlagAddorEdit == "Edit")
+            {
+                _CurrrentPartner.PartnerName = NamePartnerbox.Text;
+                _CurrrentPartner.PartnerPhone = PhonePartnerbox.Text;
+                _CurrrentPartner.PartnerEmail = emailPartnerbox.Text;
+                _CurrrentPartner.PartnerTypeId = (TypePartnerBox.SelectedIndex + 1);
+                _CurrrentPartner.PartnerRating = RatingPartnerbox.Text;
+
+                if (Data.MasterPolDataEntities.GetContext().DirectorPartners.Any(d => d.DirectorPartnersName == DirectorPartnerbox.Text))
+                {
+                    var searchDirector = Data.MasterPolDataEntities.GetContext().DirectorPartners.Where(d => d.DirectorPartnersName == DirectorPartnerbox.Text).FirstOrDefault();
+                    _CurrrentPartner.PartnerDirectorId = searchDirector.DirectorPartnersId;
+                }
+                else
+                {
+                    _CurrrentPartner.PartnerDirectorId = Data.MasterPolDataEntities.GetContext().DirectorPartners.Max(d => d.DirectorPartnersId + 1);
+                    Data.DirectorPartners NewDirector = new Data.DirectorPartners();
+                    NewDirector.DirectorPartnersId = Data.MasterPolDataEntities.GetContext().DirectorPartners.Max(d => d.DirectorPartnersId + 1);
+                    NewDirector.DirectorPartnersName = DirectorPartnerbox.Text;
+                    Data.MasterPolDataEntities.GetContext().DirectorPartners.Add(NewDirector);
+                    Data.MasterPolDataEntities.GetContext().SaveChanges();
+
+                }
+
+                string a0 = adres[0];
+                string a = adres[1];
+                string a1 = adres[2];
+                string a2 = adres[3];
+                string a3 = adres[4];
+
+                if (Data.MasterPolDataEntities.GetContext().AdressPartners.Any(d => d.AdressPartnerIndex == a0
+                && d.Area.AreaName == a && d.City.CityName == a1 && d.Street.StreetName == a2 && d.AdressPartnerIdHouse == a3))
+                {
+                    var searchadress = Data.MasterPolDataEntities.GetContext().AdressPartners.Where(d => d.AdressPartnerIndex == a0
+                    && d.Area.AreaName == a && d.City.CityName == a1 && d.Street.StreetName == a2 && d.AdressPartnerIdHouse == a3).FirstOrDefault();
+                    _CurrrentPartner.PartnerAdressId = searchadress.AdressPartnerId;
+                }
+
+                else
+                {
+                    Data.AdressPartners _NewAdress = new Data.AdressPartners();
+
+
+                    if (Data.MasterPolDataEntities.GetContext().Area.Any(d => d.AreaName == a))
+                    {
+                        var searchArea = Data.MasterPolDataEntities.GetContext().Area.Where(d => d.AreaName == a).FirstOrDefault();
+                        _NewAdress.AdressPartnerIdArea = searchArea.AreaId;
+                    }
+                    else
+                    {
+                        _NewAdress.AdressPartnerIdArea = Data.MasterPolDataEntities.GetContext().Area.Max(d => d.AreaId + 1);
+                        Data.Area NewArea = new Data.Area();
+                        NewArea.AreaName = a;
+                        Data.MasterPolDataEntities.GetContext().Area.Add(NewArea);
+                        Data.MasterPolDataEntities.GetContext().SaveChanges();
+
+                    }
+
+
+                    if (Data.MasterPolDataEntities.GetContext().City.Any(d => d.CityName == a1))
+                    {
+                        var searchCity = Data.MasterPolDataEntities.GetContext().City.Where(d => d.CityName == a1).FirstOrDefault();
+                        _NewAdress.AdressPartnerIdCity = searchCity.CityId;
+                    }
+                    else
+                    {
+                        _NewAdress.AdressPartnerIdCity = Data.MasterPolDataEntities.GetContext().City.Max(d => d.CityId + 1);
+                        Data.City NewCity = new Data.City();
+                        NewCity.CityName = a1;
+                        Data.MasterPolDataEntities.GetContext().City.Add(NewCity);
+                        Data.MasterPolDataEntities.GetContext().SaveChanges();
+
+                    }
+
+
+                    if (Data.MasterPolDataEntities.GetContext().Street.Any(d => d.StreetName == a2))
+                    {
+                        var searchStreet = Data.MasterPolDataEntities.GetContext().Street.Where(d => d.StreetName == a2).FirstOrDefault();
+                        _NewAdress.AdressPartnerIdStreet = searchStreet.StreetId;
+                    }
+                    else
+                    {
+                        _NewAdress.AdressPartnerIdStreet = Data.MasterPolDataEntities.GetContext().Street.Max(d => d.StreetId + 1);
+                        Data.Street NewStreet = new Data.Street();
+                        NewStreet.StreetName = a2;
+                        Data.MasterPolDataEntities.GetContext().Street.Add(NewStreet);
+                        Data.MasterPolDataEntities.GetContext().SaveChanges();
+
+                    }
+                    _NewAdress.AdressPartnerIndex = a0;
+                    _NewAdress.AdressPartnerIdHouse = a3;
+                    Data.MasterPolDataEntities.GetContext().AdressPartners.Add(_NewAdress);
+                    Data.MasterPolDataEntities.GetContext().SaveChanges();
+                    _CurrrentPartner.PartnerAdressId = Data.MasterPolDataEntities.GetContext().AdressPartners.Max(d => d.AdressPartnerId);
+                }
+                Data.MasterPolDataEntities.GetContext().SaveChanges();
+                MessageBox.Show("Успешно изменено","Успех",MessageBoxButton.OK,MessageBoxImage.Information);
+            }
+
+           }
 
         private void BAckButton_Click(object sender, RoutedEventArgs e)
         {

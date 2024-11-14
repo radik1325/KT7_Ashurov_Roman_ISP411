@@ -50,3 +50,5 @@ C:\Users\comcuru\Desktop\pract\KT7_Ashurov_Roman_ISP411\IS-MasterPol\IS-MasterPo
 C:\Users\comcuru\Desktop\pract\KT7_Ashurov_Roman_ISP411\IS-MasterPol\IS-MasterPol\obj\Debug\IS-MasterPol.pdb
 C:\Users\comcuru\Desktop\pract\KT7_Ashurov_Roman_ISP411\IS-MasterPol\IS-MasterPol\obj\Debug\Pages\AddPartnerPage.g.cs
 C:\Users\comcuru\Desktop\pract\KT7_Ashurov_Roman_ISP411\IS-MasterPol\IS-MasterPol\obj\Debug\Pages\AddPartnerPage.baml
+C:\Users\comcuru\Desktop\pract\KT7_Ashurov_Roman_ISP411\IS-MasterPol\IS-MasterPol\obj\Debug\Pages\HistoryPage.g.cs
+C:\Users\comcuru\Desktop\pract\KT7_Ashurov_Roman_ISP411\IS-MasterPol\IS-MasterPol\obj\Debug\Pages\HistoryPage.baml

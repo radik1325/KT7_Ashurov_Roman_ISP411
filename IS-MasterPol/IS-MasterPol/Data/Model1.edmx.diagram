@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bc43c8739dc0439084eb1772ade9460d" Name="Diagram1">
+      <Diagram DiagramId="f83873ee16934d5c8d41bfdcb1aa03c2" Name="Diagram1">
         <EntityTypeShape EntityType="MasterPolDataModel.AdressPartners" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MasterPolDataModel.Area" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="MasterPolDataModel.City" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
